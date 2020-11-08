@@ -10,7 +10,8 @@ cam = camA()
 start=time.time()
 current_dir = "/home/pi/testphoto/"
 model=tf.keras.models.load_model("/home/pi/model/model_2.h5")
-for i in range(100):
+
+def prediction():
     _,img2 = cam.read()
     #img_resize=cv2.resize(img,(480,640))
     img = np.expand_dims(img2,0)

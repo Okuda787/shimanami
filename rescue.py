@@ -7,9 +7,10 @@ import shutil
 from function.areadetection import *
 from function.movement import *
 from function.pid_g import *
+from learningmovement import *
 from wall import *
 from rescuekit import *
-
+from prediction import *
 target_dir = '/home/pi/testphoto'
 shutil.rmtree(target_dir)
 os.mkdir(target_dir)
@@ -34,7 +35,8 @@ try:
                 Size=0
                 Dif=0
         elif i % 300 == 200:
-            
+            ##
+            learningmovement()
         else:
             pid_g()
         if i == 1001: 

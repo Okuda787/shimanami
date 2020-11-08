@@ -34,6 +34,34 @@ def l90(second):
         BP.set_motor_dps(BP.PORT_D, target)
         cur=time.time()-start
 
+def back():
+    stay(0.5)
+    start=time.time()
+    cur=0
+    second=1.5
+    power=30
+    target=960/second
+    nor_reading_l=0
+
+    while(cur<=second):
+        BP.set_motor_dps(BP.PORT_B, target)
+        BP.set_motor_dps(BP.PORT_D, -1*target)
+        cur=time.time()-start
+    while(nor_reading_l<=80): #黒見つけるまで
+        sen_reading_l = int(BP.get_sensor(BP.PORT_4)) #実測値
+        nor_reading_l = 100 *(sen_reading_l - min_v_l)/(max_v_l - min_v_l) #実測値を標準化　0が最小値　100が最大値
+        BP.set_motor_dps(BP.PORT_B, target)
+        BP.set_motor_dps(BP.PORT_D, -1*target)
+        cur=time.time()-start
+
+    start=time.time()
+    target=200/second
+    cur=0
+    while(cur<=second):
+        BP.set_motor_dps(BP.PORT_B, -1*target)
+        BP.set_motor_dps(BP.PORT_D, target)
+        cur=time.time()-start
+
 def straight(second,power):
     start=time.time()
     cur=0
