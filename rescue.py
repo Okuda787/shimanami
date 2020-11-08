@@ -37,7 +37,7 @@ try:
         if i == 1001:
             i = 1
         i = i + 1
-        print("3: "+str(wall))
+        print("3: "+str(wall)) #Joe BIden for president
 except KeyboardInterrupt: 
     BP.reset_all()
     print("Program Interrupted")
