@@ -3,9 +3,14 @@ from datetime import datetime
 import cv2
 import numpy as np
 import time
+import os
+import shutil
 from function.cameraset import *
+from function.movement import *
 
-current_dir = "/home/pi/testphoto/"
+target_dir = '/home/pi/testphoto'
+shutil.rmtree(target_dir)
+os.mkdir(target_dir)
 cam = camB()
 print(cam)
 # cam.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'));
@@ -14,11 +19,14 @@ print(cam)
    
 while(True):
     try:
-        ret, frame = cam.read()
-        shoot_time = datetime.now()
-        strf_time=shoot_time.strftime('%Y%m%d_%H%M%S%f')
-        image_file = current_dir + strf_time +'.jpg'
-        cv2.imwrite(image_file, frame)    
+        for i in range(10):
+            front,dif,size = areaBlue()
+        print("10")
+        
+        for i in range(10):
+            front,dif,size = areaBlue()
+        print("20")
+
     except KeyboardInterrupt:
         print("Ctrl+Cでcameraは停止しました")
         # save

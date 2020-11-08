@@ -1,6 +1,6 @@
 import time     
 import brickpi3
-from function.areaditection import area
+from function.areadetection import area
 
 BP = brickpi3.BrickPi3() 
 BP.set_sensor_type(BP.PORT_3,  BP.SENSOR_TYPE.NXT_LIGHT_ON) #右

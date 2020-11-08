@@ -1,6 +1,6 @@
 import time     
 import brickpi3 
-from .areaditection import *
+from .areadetection import *
 
 BP = brickpi3.BrickPi3() 
 BP.set_sensor_type(BP.PORT_3, BP.SENSOR_TYPE.NXT_LIGHT_ON) #右
@@ -139,17 +139,19 @@ def l90cor():##
 #         BP.set_motor_power(BP.PORT_B,curve) 
 #         BP.set_motor_power(BP.PORT_D,-curve) 
 #     print("Checking whether or not this is run only once ")
+
 #案B　ループ毎更新
 def curves(dif): #
-    k = 0.15 #比例定数
+    k = 0.17 #比例定数
     curve = k * dif 
     while abs(dif) > 30 : 
         BP.set_motor_power(BP.PORT_B,-curve) 
         BP.set_motor_power(BP.PORT_D,curve) 
         front,dif,size=areaBlue() #
         stay(0.15)
-        # print(dif)
+        print(dif)
         curve = k * dif
+
 #案C　difからdegreesを出して角速度
 # def curves(dif): #
 #     k = 0.3 #比例定数s

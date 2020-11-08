@@ -4,7 +4,7 @@ import time
 import brickpi3  
 import os
 import shutil
-from function.areaditection import *
+from function.areadetection import *
 from function.movement import *
 from function.pid_g import *
 from wall import *
@@ -17,8 +17,14 @@ os.mkdir(target_dir)
 i = 1
 try:
     while True:
-        pid_g()
-        if i % 200 == 0:
+        if i % 300 == 0:
+            front,dif,size = areaBlue()
+            print(front)
+            if front == True:
+                rescuekit()
+                Size=0
+                Dif=0
+        elif i % 300 == 100:
             wall = False
             print("1: "+str(wall))
             wall,dif,size = areaOrange()
@@ -27,17 +33,14 @@ try:
                 Wall()
                 Size=0
                 Dif=0
-        if i % 200 == 100:
-            front,dif,size = areaBlue()
-            print(front)
-            if front == True:
-                rescuekit()
-                Size=0
-                Dif=0
-        if i == 1001:
+        elif i % 300 == 200:
+            
+        else:
+            pid_g()
+        if i == 1001: 
             i = 1
         i = i + 1
-        print("3: "+str(wall)) #Joe BIden for president
+        print("3: "+str(wall))
 except KeyboardInterrupt: 
     BP.reset_all()
     print("Program Interrupted")

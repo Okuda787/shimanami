@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import time
 import brickpi3  
-from function.areaditection import *
+from function.areadetection import *
 from function.movement import *
 from function.pid_g import *
 # cam.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'));
@@ -21,6 +21,8 @@ def Wall():
     stay(1)
     r90(3)
     straight(3.5,30)
+    for i in range(5):
+        wall,dif,size = areaOrange()
     l90(3)
     # while True:
         # straight(4,40)

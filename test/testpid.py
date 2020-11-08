@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import time
 import brickpi3  
-from function.areaditection import area
+from function.areadetection import area
 from function.movement import r90,l90,straight,stay
 from function.pid import *
 
